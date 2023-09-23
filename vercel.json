@@ -1,0 +1,22 @@
+{
+    "version": 2,
+    "builds": [
+        {
+            "src": "app.py",
+            "use": "@vercel/python",
+            "config": {
+                "maxLambdaSize": "20mb"
+            }
+        }
+    ],
+    "routes": [
+        {
+            "src": "/(.*)",
+            "dest": "/app.py",
+            "headers": {
+              "cache-control": "no-cache, no-store, must-revalidate",
+              "Access-Control-Allow-Origin": "*"
+            }
+        }
+    ]
+}
