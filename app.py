@@ -37,15 +37,13 @@ def getdata():
           pagedata=f"page-{page}-theme"
         else:
           pagedata=f"page-{page}"
-        print("拿缓存")
+        print("请求缓存")
         kvdata=kv.get(pagedata)
         kvcount=kv.get("count")
-        print("拿daol")
-        # print(kvdata)
-        # print(kvcount)
-        if kvdata and data['count']==kvcount:
+        print(kvdata)
+        if kvdata and str(data['count'])==str(kvcount):
           print("使用缓存")
-          return kvdata
+          return json.loads(kvdata)
         else:
           # 添加code和msg字段
           print("不使用缓存")
@@ -61,10 +59,9 @@ def getdata():
             for thread in threads:
               thread.join()
           # print(data)
-          print("set")
+          print("设置缓存")
           kv.set("count",data['count'])
-          kv.set(pagedata,str(data))
-          print("seted")
+          kv.set(pagedata,json.dumps(data))
           return data
       else:
         data['code'] = response.status_code
