@@ -13,6 +13,29 @@
 
 见[@eallion](https://eallion.com/neodb_token)
 
+### 测试
+
+<link rel="stylesheet" type="text/css" href="https://jsd.onmicrosoft.cn/gh/swagger-api/swagger-ui/dist/swagger-ui.css">
+<div id="swagger-ui"></div>
+
+<script src="https://jsd.onmicrosoft.cn/gh/swagger-api/swagger-ui/dist/swagger-ui-bundle.js"></script>
+<script src="https://jsd.onmicrosoft.cn/gh/swagger-api/swagger-ui/dist/swagger-ui-standalone-preset.js"></script>
+
+<script>
+window.onload = function() {
+  const ui = SwaggerUIBundle({
+    url: "http://127.0.0.1:5000/apispec_1.json",
+    dom_id: '#swagger-ui',
+    presets: [
+      SwaggerUIBundle.presets.apis,
+      SwaggerUIStandalonePreset
+    ]
+  })
+
+  window.ui = ui
+}
+</script>
+
 ### 传入
 
 同[官方](https://neodb.social/developer/#/default/journal_api_list_marks_on_shelf)
