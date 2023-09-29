@@ -65,9 +65,9 @@ def getdata(type: str, category: str, page: int, theme: str):
 
         if environ.get('USE_REDIS'):
             if environ.get('USE_I2C') and theme == "true":
-                pagedata = f"page-{page}-theme"
+                pagedata = f"page-{page}-{type}-{category}-theme"
             else:
-                pagedata = f"page-{page}"
+                pagedata = f"page-{page}-{type}-{category}"
 
             kvdata = kv.get(pagedata)
             kvcount = kv.get("count")
